@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>General Knowledge — The Field Manual of Laws, Adages &amp; Effects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --olive:#4C5B3C;
+  --olive-dark:#3A462D;
+  --field:#7A8B57;
+  --sage:#E4E7D8;
+  --paper:#FFFFFF;
+  --brass:#F0A830;
+  --signal:#D6453D;
+  --ink:#232A1C;
+  --muted:#6E7566;
+  --shadow:0 2px 0 rgba(35,42,28,.16);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--sage);
+  color:var(--ink);
+  font-family:"Open Sans",Helvetica,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:Montserrat,Helvetica,Arial,sans-serif;font-weight:800;margin:0;line-height:1.15}
+b,strong{font-weight:700}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  background:var(--olive);
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 14px,transparent 14px 28px);
+  color:#fff;
+  padding:44px 20px 52px;
+  text-align:center;
+  border-bottom:8px solid var(--brass);
+  overflow:hidden;
+}
+.hero-inner{max-width:760px;margin:0 auto}
+.mascot{width:190px;height:190px;display:block;margin:0 auto 18px}
+.hero h1{font-size:clamp(38px,9vw,66px);letter-spacing:-1px;text-shadow:0 3px 0 rgba(0,0,0,.18)}
+.hero h1 .kn{color:var(--brass)}
+.dogtag{
+  display:inline-block;margin:14px 0 0;padding:5px 16px;
+  border:2px solid rgba(255,255,255,.5);border-radius:20px;
+  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+}
+.hero p.brief{
+  font-size:clamp(15px,3.6vw,19px);
+  margin:16px auto 0;max-width:56ch;color:#EDEFE4;
+}
+.hero p.brief em{color:var(--brass);font-style:italic;font-weight:600}
+.stripes{display:flex;height:10px;width:120px;margin:22px auto 0;border-radius:2px;overflow:hidden}
+.stripes span{flex:1}
+
+/* ---------- TOOLBAR ---------- */
+.toolbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--olive-dark);
+  padding:12px 16px;
+  box-shadow:0 3px 0 rgba(35,42,28,.25);
+}
+.toolbar-inner{max-width:1080px;margin:0 auto}
+.searchrow{display:flex;gap:8px}
+.actionrow{display:flex;gap:8px;margin-top:8px}
+.actionrow .btn{flex:1}
+.btn.ghost{
+  background:transparent;color:#DDE2D2;
+  border:2px solid rgba(255,255,255,.4);box-shadow:none;
+  display:flex;align-items:center;justify-content:center;gap:7px;
+}
+.btn.ghost:hover{background:rgba(255,255,255,.08);color:#fff;border-color:#fff}
+.btn.ghost[aria-expanded="true"]{background:#fff;color:var(--ink);border-color:#fff}
+.btn.ghost .caret{font-size:9px;transition:transform .18s ease}
+.btn.ghost[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.btn.ghost .count{
+  background:var(--brass);color:var(--ink);border-radius:10px;
+  padding:1px 7px;font-size:11px;
+}
+.chips[hidden]{display:none}
+#search{
+  flex:1;min-width:0;
+  font-family:inherit;font-size:16px;
+  padding:12px 14px;border:3px solid #fff;border-radius:3px;
+  background:#fff;color:var(--ink);
+}
+#search::placeholder{color:#9AA192}
+#search:focus{outline:none;border-color:var(--brass)}
+.btn{
+  font-family:Montserrat,sans-serif;font-weight:700;font-size:12px;
+  letter-spacing:1px;text-transform:uppercase;
+  padding:12px 16px;border:0;border-radius:3px;cursor:pointer;
+  background:var(--brass);color:var(--ink);box-shadow:0 3px 0 #B87E1D;
+  transition:transform .08s ease;
+}
+.btn:hover{background:#FFB93F}
+.btn:active{transform:translateY(3px);box-shadow:0 0 0 #B87E1D}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{
+  font-family:"Open Sans",sans-serif;font-size:12.5px;font-weight:600;
+  padding:6px 12px;border-radius:3px;cursor:pointer;
+  border:2px solid rgba(255,255,255,.28);
+  background:transparent;color:#DDE2D2;
+}
+.chip:hover{border-color:#fff;color:#fff}
+.chip[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
+.chip .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+
+/* ---------- LIST ---------- */
+main{max-width:1080px;margin:0 auto;padding:26px 16px 70px}
+.tally{
+  font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:16px;
+}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{
+  display:block;width:100%;text-align:left;font:inherit;color:inherit;
+  background:var(--paper);
+  border:0;border-left:7px solid var(--olive);
+  border-radius:3px;padding:16px 16px 14px;
+  box-shadow:var(--shadow);cursor:pointer;
+}
+.card:hover{box-shadow:0 4px 0 rgba(35,42,28,.2)}
+.card:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.card h3{font-size:17.5px;letter-spacing:-.2px}
+.tag{
+  flex:none;font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+  color:#fff;padding:3px 8px;border-radius:2px;line-height:1.5;
+}
+.line{margin:9px 0 0;font-size:14.5px}
+.line b{
+  background-color:#FBE3A6;
+  box-shadow:0 0 0 2px #FBE3A6;
+  border-radius:2px;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+.more{
+  max-height:0;overflow:hidden;
+  transition:max-height .22s ease;
+  border-top:2px dashed #DDE0D2;margin-top:0;
+}
+.card[aria-expanded="true"] .more{max-height:340px;margin-top:12px}
+.more-in{padding-top:10px}
+.more h4{
+  margin:0 0 4px;font-family:Montserrat,sans-serif;font-size:11px;
+  letter-spacing:1.4px;text-transform:uppercase;color:var(--field);
+}
+.more p{margin:0 0 10px;font-size:14px}
+.filed{font-size:12.5px;color:var(--muted);font-style:italic;margin:0}
+.hint{
+  display:block;margin-top:10px;font-size:11px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:#A6AC9B;
+}
+.card[aria-expanded="true"] .hint{color:var(--signal)}
+.flash{animation:flash .9s ease 2}
+@keyframes flash{0%,100%{box-shadow:var(--shadow)}50%{box-shadow:0 0 0 4px var(--brass)}}
+.empty{
+  background:var(--paper);border-left:7px solid var(--signal);
+  padding:22px;border-radius:3px;box-shadow:var(--shadow);
+}
+.empty h3{font-size:19px;margin-bottom:6px}
+footer{
+  background:var(--olive-dark);color:#C9D0BA;text-align:center;
+  padding:26px 20px;font-size:13.5px;border-top:8px solid var(--brass);
+}
+footer b{color:#fff}
+
+/* ---------- SALUTE ---------- */
+#arm{transform-origin:118px 116px}
+@media (prefers-reduced-motion:no-preference){
+  #arm{animation:salute 2.6s ease-in-out .5s 1 both}
+}
+@keyframes salute{
+  0%{transform:rotate(52deg)}
+  22%{transform:rotate(0deg)}
+  70%{transform:rotate(0deg)}
+  100%{transform:rotate(52deg)}
+}
+@media (max-width:600px){
+  .mascot{width:150px;height:150px}
+  .grid{grid-template-columns:1fr}
+  .btn{padding:12px 12px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <svg class="mascot" viewBox="0 0 200 200" role="img" aria-label="General Knowledge, a white circle character wearing an army helmet and saluting">
+      <defs>
+        <clipPath id="badge"><circle cx="100" cy="100" r="92"/></clipPath>
+      </defs>
+      <g clip-path="url(#badge)">
+        <circle cx="100" cy="100" r="92" fill="#61734B"/>
+        <polygon points="100,100 200,200 200,92" fill="#55663F"/>
+      </g>
+      <circle cx="100" cy="100" r="92" fill="none" stroke="#F0A830" stroke-width="6"/>
+      <!-- legs -->
+      <rect x="83" y="140" width="9" height="26" rx="4.5" fill="#fff" stroke="#232A1C" stroke-width="4"/>
+      <rect x="108" y="140" width="9" height="26" rx="4.5" fill="#fff" stroke="#232A1C" stroke-width="4"/>
+      <!-- body -->
+      <circle cx="100" cy="108" r="46" fill="#fff" stroke="#232A1C" stroke-width="5"/>
+      <!-- face -->
+      <circle cx="86" cy="108" r="5.4" fill="#232A1C"/>
+      <circle cx="112" cy="108" r="5.4" fill="#232A1C"/>
+      <path d="M86 124 q14 12 28 0" fill="none" stroke="#232A1C" stroke-width="5" stroke-linecap="round"/>
+      <!-- helmet -->
+      <path d="M54 88 q4 -46 46 -46 t46 46 z" fill="#4C5B3C"/>
+      <path d="M50 88 q50 -14 100 0 q0 10 -50 10 t-50 -10 z" fill="#3A462D"/>
+      <path d="M124 60 l6 34" stroke="#2E3823" stroke-width="4" fill="none"/>
+      <polygon points="78,58 82,68 93,68 84,75 88,86 78,79 68,86 72,75 63,68 74,68" fill="#F0A830"/>
+      <!-- chin strap -->
+      <path d="M56 90 q-2 22 14 30" fill="none" stroke="#3A462D" stroke-width="5" stroke-linecap="round"/>
+      <!-- saluting arm -->
+      <g id="arm">
+        <rect x="112" y="110" width="34" height="10" rx="5" fill="#fff" stroke="#232A1C" stroke-width="4.5"/>
+      </g>
+    </svg>
+
+    <h1>General <span class="kn">Knowledge</span></h1>
+    <div class="dogtag">Field Manual · Rev. 2015</div>
+    <p class="brief">Every law, adage, razor and effect the General could dig up — the ones <em>everybody</em> quotes and the ones <em>nobody</em> has heard of. Tap any file to read the briefing.</p>
+    <div class="stripes">
+      <span style="background:#F0A830"></span><span style="background:#fff"></span><span style="background:#D6453D"></span>
+    </div>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="toolbar-inner">
+    <div class="searchrow">
+      <input id="search" type="search" placeholder="Search the manual — try &quot;memory&quot; or &quot;Godwin&quot;" aria-label="Search laws, adages and effects">
+    </div>
+    <div class="actionrow">
+      <button class="btn ghost" id="filterbtn" type="button" aria-expanded="false" aria-controls="chips">
+        <span id="filterlabel">Sections</span><span class="caret">▼</span>
+      </button>
+      <button class="btn" id="random" type="button">Surprise me</button>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filter by section" hidden></div>
+  </div>
+</nav>
+
+<main>
+  <p class="tally" id="tally"></p>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  <b>General Knowledge</b> — at ease. Built as one file: no tracking, no server, works offline.
+</footer>
+
+<script>
+const CATS = {
+  "Media &amp; Internet Lore":"#2980B9",
+  "Razors &amp; Adages":"#C0392B",
+  "Mind &amp; Memory":"#8E44AD",
+  "Senses &amp; Signals":"#16A085",
+  "People &amp; Groups":"#E67E22",
+  "Buying &amp; Deciding":"#B9770E",
+  "Work &amp; Bureaucracy":"#7F8C8D",
+  "Systems &amp; Money":"#27AE60",
+  "Machines &amp; Interfaces":"#34495E",
+  "Numbers &amp; Odds":"#D81B60"
+};
+const NET="Media &amp; Internet Lore", RAZ="Razors &amp; Adages", MIND="Mind &amp; Memory",
+      SEN="Senses &amp; Signals", PPL="People &amp; Groups", BUY="Buying &amp; Deciding",
+      WRK="Work &amp; Bureaucracy", SYS="Systems &amp; Money", MAC="Machines &amp; Interfaces",
+      NUM="Numbers &amp; Odds";
+
+const DATA = [
+/* ---- MEDIA & INTERNET LORE ---- */
+{n:"Betteridge's Law of Headlines",c:NET,w:"Ian Betteridge, 2009",l:"Any headline ending in a question mark can be answered with the word <b>no</b>.",f:"If the paper had proof that sharks were invading the Thames, the headline would say so. The question mark is an admission they don't."},
+{n:"Cunningham's Law",c:NET,w:"named for Ward Cunningham, inventor of the wiki",l:"The best way to get a right answer online is to post a <b>wrong</b> one.",f:"Nobody answers 'what year did this come out?' Post 'it came out in 1997' and four people will correct you within a minute."},
+{n:"Godwin's Law",c:NET,w:"Mike Godwin, 1990",l:"As an online argument grows longer, the chance of a <b>Hitler comparison approaches 1</b>.",f:"Originally a piece of counter-propaganda: Godwin wanted people to notice how cheaply they reached for the worst thing in history."},
+{n:"Poe's Law",c:NET,w:"Nathan Poe, 2005",l:"Without a clear signal of intent, <b>parody of an extreme view is indistinguishable</b> from the real thing.",f:"The reason satire accounts get sincere followers, and why the winking emoji became load-bearing punctuation."},
+{n:"Muphry's Law",c:NET,w:"John Bangsund, 1992",l:"Any criticism of someone's writing or editing will <b>itself contain an error</b>.",f:"The misspelling in the name is the whole joke. Correct someone's grammar in public and watch your own typo arrive."},
+{n:"Skitt's Law",c:NET,w:"Usenet folklore",l:"Any post correcting an error will contain <b>at least one error of its own</b>.",f:"Muphry's cousin, born in newsgroups. The corrective reply is statistically the most dangerous sentence you can write."},
+{n:"Danth's Law",c:NET,w:"Usenet folklore",l:"If you have to <b>declare yourself the winner</b> of an argument, you lost it.",f:"Also called Parker's Law. The announcement is the tell: winners rarely need to issue the verdict themselves."},
+{n:"Pommer's Law",c:NET,w:"Rob Pommer, 2007",l:"The internet can change a mind from <b>having no opinion to having a wrong one</b>.",f:"A pointed observation about how persuasion online mostly fills vacuums rather than correcting errors."},
+{n:"Streisand Effect",c:NET,w:"Mike Masnick, 2005",l:"Trying to suppress information <b>makes far more people see it</b>.",f:"Barbra Streisand sued to hide an aerial photo of her house. The photo had six downloads before the lawsuit and hundreds of thousands after."},
+{n:"Wadsworth Constant",c:NET,w:"Reddit, 2011",l:"The <b>first 30%</b> of any video or podcast can be skipped without losing anything.",f:"Intros, sponsor reads and throat-clearing. Some players will even jump you straight to the 30% mark."},
+{n:"Scunthorpe Problem",c:NET,w:"named after a 1996 filter incident",l:"Profanity filters <b>block innocent words</b> that happen to contain rude substrings.",f:"Residents of Scunthorpe couldn't sign up for an ISP. Same reason Dr. Sidebottom and the town of Penistone keep getting rejected."},
+{n:"Law of Exclamation",c:NET,w:"Lore Sjöberg, 2006",l:"The more <b>exclamation marks</b> in a claim, the more likely it is false.",f:"Chain emails, miracle-cure posts and forwarded warnings all cluster at the high end of the punctuation scale."},
+{n:"Gell-Mann Amnesia Effect",c:NET,w:"Michael Crichton, 2002",l:"You spot the errors in articles about <b>your own field</b> — then trust the next page completely.",f:"Named after physicist Murray Gell-Mann. The forgetting happens as you turn the page, every time."},
+{n:"Woozle Effect",c:NET,w:"from Winnie-the-Pooh, coined 1979",l:"A claim <b>cited often enough</b> becomes accepted fact, even with no evidence underneath.",f:"Pooh and Piglet track a woozle by circling their own footprints. Chase a statistic back through its citations and you often find the same empty original."},
+{n:"Kuleshov Effect",c:NET,w:"Lev Kuleshov, 1910s",l:"Viewers read <b>emotion into a neutral face</b> based on the shot next to it.",f:"The same still of an actor read as hunger, grief or desire depending on whether it was cut against soup, a coffin or a woman. Editing invented film acting."},
+{n:"Rashomon Effect",c:NET,w:"from Kurosawa's 1950 film",l:"Honest witnesses to one event produce <b>irreconcilable accounts</b> of it.",f:"Not lying — remembering. Each account is shaped by position, stake and self-image, which is why 'what actually happened' is often unrecoverable."},
+{n:"Overton Window",c:NET,w:"Joseph Overton, 1990s",l:"Only ideas inside a <b>narrow band of acceptability</b> can be publicly proposed at a given moment.",f:"Politicians rarely move the window; activists and fringe voices drag it, and the mainstream follows to where it has moved."},
+{n:"Wiio's Laws",c:NET,w:"Osmo Wiio, 1978",l:"Communication <b>usually fails, except by accident</b>.",f:"Finland's answer to Murphy. The corollaries get worse: if a message can be understood in several ways, it will be understood in the most damaging one."},
+{n:"Citogenesis",c:NET,w:"Randall Munroe, 2011",l:"An <b>unsourced claim</b> gets added to a wiki, a journalist cites the wiki, and the wiki then cites the journalist as proof.",f:"Coined in an xkcd comic. The circle closes so cleanly that the original guess is nearly impossible to trace back to."},
+{n:"Eternal September",c:NET,w:"Usenet folklore, coined 1994",l:"A community's culture <b>never recovers</b> once new arrivals permanently outpace its ability to teach them the norms.",f:"Usenet used to get one September influx of clueless freshers a year, who settled in by October. In 1993 AOL opened the gates and the influx never stopped."},
+{n:"Online Disinhibition Effect",c:NET,w:"John Suler, 2004",l:"Anonymity and distance make people say things online they would <b>never say face to face</b>.",f:"Suler split it into benign (opening up) and toxic (flaming) versions. The toxic half is doing most of the work in any comments section."},
+{n:"Sealioning",c:NET,w:"named via a David Malki comic, 2014",l:"Demanding endless <b>polite proof</b> for a settled point is a way of harassing someone while looking reasonable.",f:"Named for a Wondermark strip where a sea lion relentlessly, courteously insists a stranger justify one offhand remark. The politeness is the weapon."},
+{n:"Dead Internet Theory",c:NET,w:"online forum theory, popularised c. 2021",l:"Much of the internet's traffic and content is now <b>bots talking to bots</b>, not people.",f:"Started as a fringe forum post. Large-scale bot traffic and AI-generated content have made the joke land a lot closer to home since."},
+{n:"Rule 34",c:NET,w:"internet forum lore, early 2000s",l:"If a thing exists, assume <b>fan-made content of it exists</b> somewhere online.",f:"Part of the informal, crowd-written \"Rules of the Internet\" list that circulated on early message boards. Rule 35 states that if it doesn\u2019t exist yet, someone will make it."},
+{n:"Rule 63",c:NET,w:"internet forum lore, mid-2000s",l:"For any given character, assume a <b>gender-swapped version</b> exists somewhere online.",f:"Another entry from the same crowdsourced \"Rules of the Internet\" list as Rule 34 — the numbering itself became a running joke long before anyone agreed on a full list."},
+{n:"15 Minutes of Fame",c:NET,w:"Andy Warhol, 1968",l:"<b>In the future, everyone will be world-famous</b> for fifteen minutes.",f:"Warhol wrote it for a 1968 exhibition catalogue, decades before camera phones. Viral fame turned out to be exactly this — sudden, universal and brief."},
+{n:"Waluigi Effect",c:NET,w:"Cleo Nardo, 2023",l:"Training an AI to reliably act like a hero makes it <b>easier</b>, not harder, to provoke it into acting like the villain.",f:"Named after Mario's antagonist because he only exists as Luigi's opposite. Coined in AI-safety circles to describe an odd instability in character-trained language models."},
+{n:"Whataboutism",c:NET,w:"traces to Soviet-era rhetoric, popularised in English 2008",l:"Deflect a criticism by asking <b>\"what about\"</b> an unrelated bad thing someone else did.",f:"A Cold War propaganda tactic that found a second life in online arguments, where it reliably derails a thread from the original point."},
+{n:"Concern Trolling",c:NET,w:"blogosphere coinage, early 2000s",l:"Posing as a sympathetic ally to <b>undermine a cause</b> from inside its own comment section.",f:"\"I support this, but don't you think it might backfire?\" said by someone who does not, in fact, support this."},
+{n:"Slashdot Effect",c:NET,w:"tech-culture term, late 1990s",l:"A small site gets linked from somewhere huge and its server <b>collapses under the traffic</b> within minutes.",f:"Named for the tech news site Slashdot, whose front page could flatten an unprepared server long before \"going viral\" was an everyday phrase. Reddit later got its own version: the hug of death."},
+{n:"Fear of Missing Out (FOMO)",c:NET,w:"popularised by Patrick J. McGinnis, 2004",l:"The anxious sense that <b>everyone else</b> is having a better time somewhere you aren't.",f:"Coined in a Harvard Business School magazine piece, then supercharged by feeds explicitly designed to show you exactly what you're missing, in real time."},
+{n:"Doomscrolling",c:NET,w:"usage traced to 2018, widespread by 2020",l:"Compulsively scrolling through <b>bad news</b> long after it stops being useful to know.",f:"The feed never runs out of catastrophe, and the algorithm has learned that alarm keeps thumbs moving longer than reassurance does."},
+
+/* ---- RAZORS & ADAGES ---- */
+{n:"Occam's Razor",c:RAZ,w:"William of Ockham, 14th century",l:"Don't multiply assumptions — prefer the explanation that needs <b>the fewest of them</b>.",f:"Not 'the simplest answer is right', but 'the answer smuggling in the least unproven stuff is the better bet until evidence arrives'."},
+{n:"Hanlon's Razor",c:RAZ,w:"popularised 1980",l:"Never attribute to <b>malice</b> what is adequately explained by <b>incompetence</b>.",f:"The email that ignored you, the policy that hurt you: usually a busy person and a bad process, not a plot against you."},
+{n:"Hitchens's Razor",c:RAZ,w:"Christopher Hitchens, 2003",l:"What can be asserted <b>without evidence</b> can be dismissed without evidence.",f:"Shifts the burden back where it belongs. You aren't obliged to disprove a claim that arrived with nothing attached."},
+{n:"Alder's Razor",c:RAZ,w:"Mike Alder, 2004",l:"If it can't be settled by <b>experiment or observation</b>, it isn't worth arguing about.",f:"Nicknamed Newton's Flaming Laser Sword. Brutal, and it cuts away most of philosophy — which was rather the point."},
+{n:"Sagan Standard",c:RAZ,w:"Carl Sagan, 1979",l:"<b>Extraordinary claims require extraordinary evidence.</b>",f:"Evidence sufficient for 'my bus was late' is nowhere near sufficient for 'I was abducted by the bus'."},
+{n:"Chesterton's Fence",c:RAZ,w:"G. K. Chesterton, 1929",l:"Don't remove a fence <b>until you know why it was put there</b>.",f:"The strongest argument against confident reformers. Half of legacy code and half of odd company rules are fences with forgotten reasons."},
+{n:"Brandolini's Law",c:RAZ,w:"Alberto Brandolini, 2013",l:"Refuting nonsense takes an <b>order of magnitude more energy</b> than producing it.",f:"Also called the bullshit asymmetry principle. One sentence of invention can cost an afternoon of sourcing to undo."},
+{n:"Sturgeon's Law",c:RAZ,w:"Theodore Sturgeon, 1957",l:"<b>Ninety per cent of everything is rubbish.</b>",f:"Sturgeon said it defending science fiction: yes most of it is bad, but so is most of everything, so judge a genre by its best."},
+{n:"Murphy's Law",c:RAZ,w:"Edward Murphy, 1949",l:"Anything that can go wrong, <b>will</b>.",f:"Born in aerospace engineering as a design principle, not a whine: if a part can be installed backwards, assume someone eventually will."},
+{n:"Finagle's Law",c:RAZ,w:"popularised by Larry Niven",l:"Anything that can go wrong will — <b>at the worst possible moment</b>.",f:"Murphy's spiteful sibling. The projector fails during the demo, never during the rehearsal."},
+{n:"Segal's Law",c:RAZ,w:"origin disputed",l:"A man with one watch knows the time. A man with two is <b>never sure</b>.",f:"A warning about redundant measurement: more dashboards can leave you with less confidence, not more."},
+{n:"Sayre's Law",c:RAZ,w:"Wallace Sayre, 1973",l:"Disputes are <b>most bitter where the stakes are lowest</b>.",f:"University politics is the classic example, though any committee arguing about a logo will do."},
+{n:"Stigler's Law of Eponymy",c:RAZ,w:"Stephen Stigler, 1980",l:"No scientific discovery is named after <b>its actual discoverer</b>.",f:"Stigler proved the point by crediting the law itself to sociologist Robert Merton."},
+{n:"Law of the Instrument",c:RAZ,w:"Abraham Kaplan and Abraham Maslow, 1960s",l:"To a man with a hammer, <b>everything looks like a nail</b>.",f:"Watch it in any team that just learned a new tool and suddenly needs it for every problem on the board."},
+{n:"Duck Test",c:RAZ,w:"attributed to James Whitcomb Riley",l:"If it looks, swims and quacks like a duck, <b>treat it as a duck</b>.",f:"Abductive reasoning in one line — useful, and precisely the reasoning that costume, mimicry and fraud exploit."},
+{n:"Boiling Frog",c:RAZ,w:"19th-century folklore",l:"Gradual change goes unnoticed until <b>it's too late to react</b>.",f:"The biology is wrong — real frogs jump out — but as a description of slow institutional decline it stubbornly refuses to die."},
+{n:"Cargo Cult Science",c:RAZ,w:"Richard Feynman, 1974",l:"Copying the <b>form</b> of a working thing without its <b>substance</b>.",f:"Islanders built runways and wooden headsets hoping planes would land. Teams do the same with standups, OKRs and design systems."},
+{n:"Goodhart's Law",c:RAZ,w:"Charles Goodhart, 1975",l:"When a <b>measure becomes a target</b>, it stops being a good measure.",f:"Measure calls handled and calls get shorter, not better. Measure lines of code and you get more lines of worse code."},
+{n:"Popper's Falsifiability Criterion",c:RAZ,w:"Karl Popper, 1934",l:"A theory only counts as scientific if there's <b>some possible observation</b> that could prove it wrong.",f:"Popper's line between science and non-science. A theory that explains literally any outcome, no matter what happens, isn't making a real prediction at all."},
+{n:"Laplace's Razor",c:RAZ,w:"Pierre-Simon Laplace, early 1800s",l:"Absent any reason to favour one outcome, assume they are <b>equally likely</b>.",f:"Also called the principle of indifference. A default starting point for probability, useful right up until you actually have evidence that breaks the tie."},
+{n:"Crocker's Rules",c:RAZ,w:"named for Lee Daniel Crocker, popularised on rationalist wikis",l:"Declaring yourself under Crocker's Rules means others may prioritise <b>truth over your feelings</b> when replying to you.",f:"An opt-in social contract, not a default. It only works because it's explicitly declared — assuming it applies to a stranger is how you get an actual argument."},
+{n:"Loki's Wager",c:RAZ,w:"named for the Norse trickster god",l:"Claiming a concept <b>can't be precisely defined</b>, and therefore can't be discussed or regulated at all.",f:"In the myth, Loki argues his head was promised, not his neck, so it can't be removed without also taking the neck. The fallacy is refusing a fuzzy-but-workable definition entirely."},
+{n:"Wittgenstein's Ruler",c:RAZ,w:"popularised by Nassim Nicholas Taleb, 2001",l:"Unless you trust the ruler, measuring the table also tells you something about the <b>ruler</b>.",f:"If a review of your work seems way off, that's sometimes evidence about the reviewer's judgement, not just about the work."},
+{n:"Sutton's Law",c:RAZ,w:"named for bank robber Willie Sutton",l:"When diagnosing a problem, check the <b>obvious cause first</b>.",f:"Sutton allegedly explained he robbed banks \"because that's where the money is.\" Medical students are taught it as a reminder not to chase exotic diagnoses before ruling out the common ones."},
+{n:"Umeshism",c:RAZ,w:"Umesh Vazirani, popularised by Scott Aaronson",l:"If you've <b>never missed a flight</b>, you're spending too much time at airports.",f:"A decision-theory joke about optimal risk: zero failures doesn't mean you're careful, it can mean you're wasting margin you didn't need to keep."},
+{n:"Copenhagen Interpretation of Ethics",c:RAZ,w:"Scott Alexander, 2013",l:"The closer you stand to a problem, the more <b>morally responsible</b> you're treated as being for it — regardless of who caused it.",f:"Naming the physics joke on purpose: getting involved seems to \"collapse\" your innocence, which quietly discourages anyone from getting involved at all."},
+{n:"Grice's Razor",c:RAZ,w:"drawn from H. P. Grice, 1975",l:"Prefer the reading that assumes the speaker was being <b>cooperative</b> over one that assumes they were being sloppy or literal.",f:"From Grice's work on conversational implicature: most of what we communicate is inferred from context, not stated outright, and misreadings usually come from ignoring that."},
+{n:"Bulverism",c:RAZ,w:"C. S. Lewis, 1941",l:"Assuming someone is wrong and <b>explaining why they'd believe it</b>, instead of showing the belief is actually false.",f:"Lewis named it for an imaginary Ezekiel Bulver, who \"proved\" his mother wrong by diagnosing her motives rather than her argument. Psychoanalysing an opponent is not refuting them."},
+{n:"Fallacy Fallacy",c:RAZ,w:"informal logic term, no single origin",l:"A claim isn't automatically false just because <b>someone argued for it badly</b>.",f:"A weak argument for a true thing is still a weak argument — but the thing itself might still be true. The two questions are separate."},
+
+/* ---- MIND & MEMORY ---- */
+{n:"Mandela Effect",c:MIND,w:"Fiona Broome, 2009",l:"Large numbers of people <b>share the same false memory</b> in confident detail.",f:"Broome named it after discovering many people remembered Nelson Mandela dying in prison in the 1980s. See also the Monopoly man's missing monocle."},
+{n:"Dunning–Kruger Effect",c:MIND,w:"Dunning and Kruger, 1999",l:"The <b>least skilled</b> often lack the very skill needed to notice they're unskilled.",f:"The flip side matters more: genuine experts routinely underestimate themselves, assuming what's easy for them is easy for everyone."},
+{n:"Baader–Meinhof Phenomenon",c:MIND,w:"named 1994; also 'frequency illusion'",l:"Learn a new word and you'll <b>see it everywhere</b> for a week.",f:"Two biases stacked: selective attention makes you notice it, confirmation bias convinces you it really did just get more common."},
+{n:"Von Restorff Effect",c:MIND,w:"Hedwig von Restorff, 1933",l:"The item that <b>doesn't fit the set</b> is the one you remember.",f:"Also the isolation effect. One red word in a black list survives; a page where everything is bold saves nothing."},
+{n:"Zeigarnik Effect",c:MIND,w:"Bluma Zeigarnik, 1927",l:"<b>Unfinished tasks</b> stay in mind more insistently than finished ones.",f:"Zeigarnik noticed waiters recalled unpaid orders perfectly and forgot them the moment the bill was settled. Cliffhangers run on this."},
+{n:"Serial Position Effect",c:MIND,w:"Hermann Ebbinghaus, 1880s",l:"You recall the <b>first and last</b> items in a list and lose the middle.",f:"Primacy plus recency. It's why the third of five candidates has a quiet disadvantage in an interview day."},
+{n:"Google Effect",c:MIND,w:"Betsy Sparrow et al., 2011",l:"We forget information we know we can <b>look up</b>, and remember where to find it instead.",f:"Also called digital amnesia. Memory quietly reorganised itself around the search bar."},
+{n:"Doorway Effect",c:MIND,w:"Radvansky et al., 2011",l:"Walking through a doorway makes you <b>forget why you came</b>.",f:"The brain treats a room boundary as an event boundary and files the previous context away. Going back really does help retrieve it."},
+{n:"Curse of Knowledge",c:MIND,w:"Camerer, Loewenstein and Weber, 1989",l:"Once you know something, you <b>can't imagine not knowing it</b>.",f:"The root cause of nearly all bad documentation, bad teaching and bad onboarding."},
+{n:"Barnum Effect",c:MIND,w:"Bertram Forer, 1948",l:"Vague, flattering descriptions feel <b>uncannily personal</b>.",f:"Forer gave a class one identical horoscope-style profile. Average accuracy rating: 4.3 out of 5. Horoscopes and many personality quizzes live here."},
+{n:"Hindsight Bias",c:MIND,w:"Baruch Fischhoff, 1975",l:"Once you know the outcome, it feels like you <b>knew it all along</b>.",f:"The creeping determinism that makes post-mortems unfair and makes past decisions look dumber than they were at the time."},
+{n:"Survivorship Bias",c:MIND,w:"Abraham Wald, 1943",l:"Studying only the <b>survivors</b> produces the exact wrong conclusion.",f:"Wald's planes came back covered in bullet holes. The military wanted to armour the holes; he armoured where there were none, because those planes never returned."},
+{n:"Texas Sharpshooter Fallacy",c:MIND,w:"folk name, 1970s",l:"Drawing the target <b>after</b> firing, around the tightest cluster of holes.",f:"Cherry-picking a pattern out of noise and then presenting it as a prediction. Common in cancer-cluster scares and backtested trading strategies."},
+{n:"Streetlight Effect",c:MIND,w:"old joke, named by David Freedman",l:"Searching where it's <b>easy to look</b>, not where the answer is.",f:"The drunk hunts for his keys under the streetlight because the light is better there. Most metrics programmes are doing this."},
+{n:"Backfire Effect",c:MIND,w:"Nyhan and Reifler, 2010",l:"Contradicting evidence can <b>strengthen</b> the belief it was meant to correct.",f:"Worth knowing that later replications found it rare and fragile — most people do update. A well-earned entry on its own watchlist."},
+{n:"Semantic Satiation",c:MIND,w:"Leon Jakobovits James, 1962",l:"Repeat a word enough and it <b>dissolves into noise</b>.",f:"Say 'spoon' forty times. The neurons signalling the meaning fatigue faster than the ones handling the sound."},
+{n:"Illusory Truth Effect",c:MIND,w:"Hasher, Goldstein and Toppino, 1977",l:"A statement <b>repeated</b> often enough starts to feel true.",f:"Familiarity is easier to process than accuracy, and the brain mistakes ease for truth. The engine behind slogans and rumours alike."},
+{n:"Tip-of-the-Tongue State",c:MIND,w:"William James described it, 1890",l:"Knowing a word's <b>shape and first letter</b> while the word itself stays out of reach.",f:"Retrieval failure, not storage failure — evidence that memories are reconstructed rather than played back."},
+{n:"Proustian Memory",c:MIND,w:"from Marcel Proust's writing, 1913",l:"A stray <b>smell or taste</b> can summon a whole buried memory more vividly than deliberate recall ever does.",f:"Named for the madeleine dipped in tea in Proust's novel. Smell is wired straight into the brain's memory and emotion centres, bypassing the usual filters."},
+{n:"Flashbulb Memory",c:MIND,w:"Brown and Kulik, 1977",l:"Shocking news produces a memory that feels <b>recorded in perfect detail</b> — and is often wrong anyway.",f:"People are extremely confident about exactly where they were during a disaster. Follow-up studies show the confidence holds steady even as the details quietly drift."},
+{n:"Misinformation Effect",c:MIND,w:"Elizabeth Loftus, 1970s",l:"A leading question after the fact can <b>plant a detail</b> that feels like it was always there.",f:"Loftus showed witnesses a car crash, then asked how fast the cars were going when they \"smashed\" versus \"hit.\" The word choice alone changed what people later swore they saw."},
+{n:"Cryptomnesia",c:MIND,w:"Théodore Flournoy, 1900s",l:"Forgetting that an idea came from <b>somewhere else</b>, and experiencing it as your own original thought.",f:"The mechanism behind a lot of accidental plagiarism: the content survives in memory, the source tag does not."},
+{n:"Chronostasis",c:MIND,w:"documented by Yarrow et al., 2001",l:"The first moment you glance at a ticking clock can feel like it <b>lasts longer</b> than a second.",f:"Also called the stopped-clock illusion. The brain backfills the gap during a quick eye movement, and the backfilled moment gets stretched."},
+{n:"Déjà Vu",c:MIND,w:"term coined by Émile Boirac, 1876",l:"The eerie certainty that a <b>brand-new moment</b> has happened before, exactly like this.",f:"Best current explanation: a brief mismatch in the brain's memory-checking circuitry flags a new scene as familiar, and conscious experience simply believes it."},
+{n:"Jamais Vu",c:MIND,w:"companion term to déjà vu",l:"A deeply familiar thing suddenly feels <b>completely unfamiliar</b>, as if seen for the first time.",f:"Say a common word aloud enough times and it can trigger a small version of this. Déjà vu's mirror image, and just as briefly disorienting."},
+{n:"Reminiscence Bump",c:MIND,w:"David Rubin et al., 1980s",l:"Older adults recall <b>disproportionately more memories</b> from their teens and twenties than any other decade.",f:"First loves, first jobs, first flats — identity-forming years get encoded harder, so autobiographical memory is lumpy rather than evenly spread."},
+{n:"Rosy Retrospection",c:MIND,w:"Terence Mitchell et al., 1997",l:"A past experience gets rated <b>more positively in memory</b> than it was rated at the time.",f:"Mitchell had people rate a trip while on it, then again afterward. The after-rating was reliably kinder — nostalgia editing out the queues and jet lag."},
+{n:"Fading Affect Bias",c:MIND,w:"W. Richard Walker et al., 1997",l:"The <b>sting of bad memories fades faster</b> than the glow of good ones.",f:"An asymmetry with an obvious evolutionary logic: it keeps people willing to try again after things go wrong."},
+{n:"Self-Serving Bias",c:MIND,w:"Miller and Ross, 1975",l:"Take <b>credit for your successes</b>, blame circumstances for your failures.",f:"I got the promotion because I earned it; I missed the deadline because the brief changed. The same person, telling two very different stories about causation."},
+
+/* ---- SENSES & SIGNALS ---- */
+{n:"McGurk Effect",c:SEN,w:"McGurk and MacDonald, 1976",l:"What your <b>eyes see</b> changes what your <b>ears hear</b>.",f:"Dub the sound 'ba' onto lips saying 'ga' and you hear 'da'. It still works after you know, which is the unsettling part."},
+{n:"Cocktail Party Effect",c:SEN,w:"Colin Cherry, 1953",l:"You can follow one voice in a crowded room — and still <b>catch your own name</b> across it.",f:"Attention filters the room, but the filter keeps a shortlist of high-priority words open at all times."},
+{n:"Troxler's Fading",c:SEN,w:"Ignaz Troxler, 1804",l:"Stare at one point and things in your <b>periphery quietly vanish</b>.",f:"The visual system discards anything unchanging. Only constant micro-movements of the eye keep the world visible."},
+{n:"Pareidolia",c:SEN,w:"described 19th century",l:"Seeing <b>faces and figures</b> in clouds, sockets and burnt toast.",f:"Face detection is tuned to fire on the faintest hint of two dots above a line. False positives cost nothing; a missed face once cost a life."},
+{n:"Uncanny Valley",c:SEN,w:"Masahiro Mori, 1970",l:"Almost-human appearance triggers <b>revulsion</b>, not warmth.",f:"Likability climbs with realism, then plunges just before human, then recovers. The graph's dip gave the effect its name."},
+{n:"Stroop Effect",c:SEN,w:"John Ridley Stroop, 1935",l:"Naming the ink colour of a <b>mismatched colour word</b> is slow and painful.",f:"Reading is so automatic it can't be switched off, so it interferes with the task you actually chose to do."},
+{n:"Bouba/Kiki Effect",c:SEN,w:"Köhler 1929; Ramachandran 2001",l:"Nearly everyone assigns <b>bouba to the round shape</b> and kiki to the spiky one.",f:"Holds across languages and cultures. Strong evidence that sound and shape aren't as arbitrary as linguists once assumed."},
+{n:"Tetris Effect",c:SEN,w:"named 1994",l:"Do something repetitive for long enough and it <b>intrudes on your thoughts and dreams</b>.",f:"Falling blocks behind closed eyelids, or the shelf-stacker who reorganises the supermarket in their sleep."},
+{n:"Overview Effect",c:SEN,w:"Frank White, 1987",l:"Seeing Earth from orbit produces a <b>lasting shift in perspective</b>.",f:"Astronauts consistently report the same thing: borders vanish, the atmosphere looks impossibly thin, and priorities rearrange permanently."},
+{n:"Phantom Vibration Syndrome",c:SEN,w:"documented from 2003",l:"Feeling your phone buzz in a pocket <b>that is empty</b>.",f:"The brain reclassifies ordinary skin noise as a notification, because it has learned that's usually what a buzz means."},
+{n:"Placebo Effect",c:SEN,w:"documented since the 18th century",l:"An inert treatment produces <b>real, measurable improvement</b>.",f:"Expectation is doing pharmacological work. Strong for pain and nausea, useless against tumour size — which is why blinded trials exist."},
+{n:"Nocebo Effect",c:SEN,w:"Walter Kennedy, 1961",l:"Expecting harm <b>produces the symptoms</b> of harm.",f:"Read the side-effect leaflet closely enough and you may well experience some of it. Warning people honestly has a genuine cost."},
+{n:"Anton's Syndrome",c:SEN,w:"Gabriel Anton, 1899",l:"Blindness the patient <b>sincerely denies having</b>.",f:"The visual cortex is damaged but the monitoring system isn't, so the brain confabulates a scene and believes it. An extreme lesson in how confidence is generated separately from evidence."},
+{n:"Synesthesia",c:SEN,w:"documented by Francis Galton, 1880",l:"One sense <b>automatically triggers another</b> — numbers arrive with colours, or sounds arrive with tastes.",f:"Galton was startled to find some people always \"saw\" the number 5 as red. Now understood as extra cross-wiring between neighbouring sensory regions of the brain."},
+{n:"Phantom Limb Sensation",c:SEN,w:"Silas Weir Mitchell, 1871",l:"Amputees can feel <b>pain, itching or movement</b> in a limb that is no longer there.",f:"Mitchell, a Civil War surgeon, coined the term after treating amputees who insisted a missing hand was still clenched. The brain's body-map lags behind the body."},
+{n:"Physiological Blind Spot",c:SEN,w:"Edme Mariotte, 1660s",l:"Each eye has a real <b>gap in its vision</b> where the optic nerve exits — and the brain quietly papers over it.",f:"Mariotte demonstrated it to the French court by making a coin vanish at a fixed distance. You've never noticed your own blind spot because your brain never shows it to you."},
+{n:"Change Blindness",c:SEN,w:"Rensink, O'Regan and Clark, 1997",l:"A <b>large, obvious change</b> to a scene goes completely unnoticed if it happens during a blink or a cut.",f:"Entire buildings can vanish between two photographs shown in alternation, and viewers stare right past it for a surprisingly long time."},
+{n:"Inattentional Blindness",c:SEN,w:"Simons and Chabris, 1999",l:"Focus hard enough on one thing and you can <b>miss a gorilla</b> walking through the middle of the scene.",f:"In the famous experiment, about half the viewers counting basketball passes never saw the person in a gorilla suit stroll through and beat their chest."},
+{n:"Autonomous Sensory Meridian Response (ASMR)",c:SEN,w:"Jennifer Allen, 2010",l:"Certain quiet sounds trigger a pleasant <b>tingling wave</b> across the scalp and spine.",f:"Allen coined the term to give a scattered online community — people who'd always had the response but never had a name for it — something to search for."},
+{n:"Misophonia",c:SEN,w:"Pawel and Margaret Jastreboff, 2001",l:"Specific ordinary sounds — <b>chewing, tapping, sniffing</b> — trigger genuine rage or panic, not just irritation.",f:"Named from Greek for \"hatred of sound.\" Not a hearing problem: the ears work fine, but the brain's emotional response to that one sound is disproportionate."},
+{n:"Weber–Fechner Law",c:SEN,w:"Weber, 1830s; formalised by Fechner, 1860",l:"How <b>strong a stimulus feels</b> grows with the logarithm of how strong it actually is, not in a straight line.",f:"A candle added to a dark room is dramatic; the same candle added to a lit stadium is nothing. Perception scales by ratio, not by amount."},
+{n:"Ganzfeld Effect",c:SEN,w:"Wolfgang Metzger, 1930s",l:"Stare into a totally <b>uniform, featureless field</b> and the brain starts hallucinating patterns to fill it.",f:"Deprived of any real signal to process, the visual system apparently can't just idle — it manufactures something rather than show nothing."},
+{n:"Motion Aftereffect",c:SEN,w:"Robert Addams, 1834",l:"Stare at a waterfall, look away, and <b>static rocks appear to drift upward</b> for a few seconds.",f:"Also called the waterfall illusion, from Addams's observations at the Falls of Foyers in Scotland. Motion-detecting neurons fatigue in one direction and overcorrect once the movement stops."},
+{n:"McCollough Effect",c:SEN,w:"Celeste McCollough, 1965",l:"Stare at coloured stripes in one orientation and plain black-and-white stripes at that <b>same angle later show a tinge of colour</b>.",f:"One of the longest-lasting visual illusions known — the effect can linger for hours, sometimes days, after only a few minutes of exposure."},
+
+/* ---- PEOPLE & GROUPS ---- */
+{n:"Bystander Effect",c:PPL,w:"Darley and Latané, 1968",l:"The <b>more witnesses</b> present, the less likely any one of them helps.",f:"Responsibility gets diluted across the crowd. The counter is to break the diffusion: point at one person and give one instruction."},
+{n:"Ringelmann Effect",c:PPL,w:"Maximilien Ringelmann, 1913",l:"<b>Per-person effort falls</b> as the group grows.",f:"Measured with a rope: eight men pulled far less than eight times one man. Social loafing, discovered decades before the word existed."},
+{n:"Spotlight Effect",c:PPL,w:"Gilovich, Medvec and Savitsky, 2000",l:"You <b>massively overestimate</b> how much anyone noticed.",f:"Students wearing an embarrassing shirt guessed half the room clocked it. About a quarter had. Nobody is thinking about your stumble."},
+{n:"Illusion of Transparency",c:PPL,w:"Gilovich et al., 1998",l:"You feel your <b>nerves are visible</b> when they aren't.",f:"Your racing heart is deafening from inside and invisible from outside. Knowing this measurably improves public speaking."},
+{n:"Pratfall Effect",c:PPL,w:"Elliot Aronson, 1966",l:"A competent person becomes <b>more likeable after a small blunder</b>.",f:"Crucially it only works if competence is already established. Spill coffee before proving yourself and you're just the person who spilt coffee."},
+{n:"Ben Franklin Effect",c:PPL,w:"Franklin's autobiography, 1791",l:"Someone who does <b>you</b> a favour likes you more afterwards.",f:"Franklin disarmed a rival by asking to borrow a rare book. The mind resolves the oddity by concluding it must like you."},
+{n:"Halo Effect",c:PPL,w:"Edward Thorndike, 1920",l:"One good trait makes every <b>other</b> trait look good.",f:"Thorndike found officers rated attractive soldiers as smarter and better shots. Hiring, grading and app-store reviews all leak the same way."},
+{n:"Horn Effect",c:PPL,w:"the inverse of Thorndike's finding",l:"One bad trait <b>contaminates the whole judgement</b>.",f:"A typo in a covering letter becomes evidence of carelessness in work nobody has read yet."},
+{n:"Cheerleader Effect",c:PPL,w:"Walker and Vul, 2013",l:"People look <b>more attractive in a group</b> than alone.",f:"The visual system averages faces in a set and averaged faces are more appealing. Yes, the study cites the sitcom line that named it."},
+{n:"Hawthorne Effect",c:PPL,w:"Western Electric works, 1920s-30s",l:"People change their behaviour <b>because they're being watched</b>.",f:"Factory output rose when the lights went up — and rose again when they went back down. The attention was the intervention."},
+{n:"Pygmalion Effect",c:PPL,w:"Rosenthal and Jacobson, 1968",l:"<b>High expectations</b> raise performance, all on their own.",f:"Teachers told certain pupils were late bloomers — chosen at random — and those pupils gained more. The teachers' behaviour changed first."},
+{n:"Golem Effect",c:PPL,w:"named 1982",l:"<b>Low expectations</b> lower performance just as reliably.",f:"The unhappy mirror of Pygmalion, and the reason 'managing the weakest link' so often creates one."},
+{n:"Dunbar's Number",c:PPL,w:"Robin Dunbar, 1990s",l:"Around <b>150</b> stable relationships is the practical human ceiling.",f:"Derived from primate neocortex ratios and echoed in village sizes and army companies. Contested, but a useful rule for when an org starts needing formal process."},
+{n:"Abilene Paradox",c:PPL,w:"Jerry Harvey, 1974",l:"A group agrees on something that <b>every single member privately opposes</b>.",f:"A family drives to Abilene in the heat because nobody wants to object. Consensus failure, not conflict failure — worse than groupthink and quieter."},
+{n:"Door-in-the-Face Technique",c:PPL,w:"Robert Cialdini, 1975",l:"Ask for something <b>outrageous first</b>, and your real request gets agreed to far more often.",f:"Students refused a two-year volunteering commitment, then agreed to a single zoo trip at three times the normal rate. Concession invites concession."},
+{n:"Foot-in-the-Door Technique",c:PPL,w:"Freedman and Fraser, 1966",l:"Get someone to agree to a <b>tiny request first</b>, and they're far more likely to agree to a bigger one later.",f:"Homeowners who'd agreed to display a small window sign were later far more willing to let a huge, ugly sign be planted on their front lawn. Door-in-the-face's gentler twin."},
+{n:"Groupthink",c:PPL,w:"Irving Janis, 1972",l:"A tight-knit group's <b>desire for harmony</b> quietly overrides its members' better judgement.",f:"Janis studied major policy fiascos and found the same pattern: dissent got smoothed over before it was ever voiced, not after it was heard and rejected."},
+{n:"Social Proof",c:PPL,w:"Robert Cialdini, 1984",l:"People treat a behaviour as correct simply because <b>a lot of other people are doing it</b>.",f:"Laugh tracks, busy restaurant queues and \"bestseller\" labels all work by borrowing the crowd's implied judgement instead of making their own case."},
+{n:"Reciprocity Norm",c:PPL,w:"Alvin Gouldner, 1960; popularised by Robert Cialdini",l:"Receiving even a small, unasked-for favour creates a felt <b>obligation to repay it</b>.",f:"Free samples work because of this, not because the sample itself is persuasive. The tiny gift quietly opens a debt most people feel compelled to close."},
+{n:"Milgram Obedience Studies",c:PPL,w:"Stanley Milgram, 1961–63",l:"Ordinary people will administer what they believe are <b>dangerous electric shocks</b> to a stranger, simply because an authority figure told them to.",f:"Roughly two-thirds of participants went all the way to the maximum labelled voltage. Milgram ran the study to understand how ordinary people participate in atrocities."},
+{n:"Stanford Prison Experiment",c:PPL,w:"Philip Zimbardo, 1971",l:"Ordinary students assigned to play <b>\"guard\" turned cruel</b> within days of being given the role and the uniform.",f:"Long treated as proof that situations override character. Later scrutiny found Zimbardo actively coached the guards, so read it as a cautionary tale about staged research too."},
+{n:"Asch Conformity Effect",c:PPL,w:"Solomon Asch, 1951",l:"People will give an <b>answer they know is wrong</b> if enough people around them confidently say it first.",f:"About a third of participants went along with an obviously incorrect group answer on a simple line-length test, at least once, rather than stand out."},
+{n:"Fundamental Attribution Error",c:PPL,w:"Lee Ross, 1977",l:"We explain other people's mistakes by their <b>character</b>, and our own by our <b>circumstances</b>.",f:"They cut you off because they're a bad driver; you cut someone off because you were late. Same act, opposite explanation, depending on who's in the driver's seat."},
+{n:"In-Group/Out-Group Bias",c:PPL,w:"Henri Tajfel, 1970–71",l:"People favour their own group over a rival one, even when the groups were <b>assigned completely at random</b>.",f:"Tajfel split strangers into groups by a literal coin flip and found favouritism appeared almost immediately. The group didn't need any real history to matter."},
+{n:"Mere Exposure Effect",c:PPL,w:"Robert Zajonc, 1968",l:"Simply <b>seeing something repeatedly</b> makes you like it more, with no other reason needed.",f:"Zajonc showed people nonsense shapes and foreign characters; the ones shown more often were rated more likeable, purely from familiarity."},
+{n:"Parasocial Relationship",c:PPL,w:"Horton and Wohl, 1956",l:"Viewers form a <b>one-sided emotional bond</b> with a media figure who has no idea they exist.",f:"Coined for radio and TV hosts long before streamers and influencers existed — describing a feeling of closeness that only runs in one direction."},
+
+/* ---- BUYING & DECIDING ---- */
+{n:"Sunk Cost Fallacy",c:BUY,w:"Arkes and Blumer, 1985",l:"Continuing something bad because of what you <b>already spent</b>.",f:"The money is gone either way. The only honest question is whether the next hour is worth it, and it usually isn't."},
+{n:"Anchoring Effect",c:BUY,w:"Tversky and Kahneman, 1974",l:"The <b>first number</b> you hear drags every later estimate toward it.",f:"It works with irrelevant numbers — a spun roulette wheel shifted people's guesses about UN membership. The crossed-out 'original price' is the commercial version."},
+{n:"Decoy Effect",c:BUY,w:"Huber, Payne and Puto, 1982",l:"A deliberately bad third option makes <b>one of the other two look obvious</b>.",f:"The Economist's famous pricing: print-only at the same price as print-plus-web existed solely to sell the bundle. Remove it and preferences flip."},
+{n:"Endowment Effect",c:BUY,w:"Richard Thaler, 1980",l:"You demand <b>more to give something up</b> than you'd have paid to get it.",f:"Students given a mug wanted roughly twice what other students would pay for it. Free trials are engineered around this."},
+{n:"IKEA Effect",c:BUY,w:"Norton, Mochon and Ariely, 2011",l:"You value things <b>more if you assembled them</b> yourself.",f:"Also why cake mixes were changed to require adding a real egg — a little labour buys a lot of ownership."},
+{n:"Peak–End Rule",c:BUY,w:"Kahneman et al., 1993",l:"An experience is remembered by its <b>most intense moment and its ending</b>, not its average.",f:"Duration barely registers. A longer procedure with a gentler finish is remembered as better than a shorter, sharper one."},
+{n:"Choice Overload",c:BUY,w:"Iyengar and Lepper, 2000",l:"<b>Too many options</b> reduce the chance of choosing anything.",f:"A jam stall with 24 varieties drew more browsers and made a tenth as many sales as one with six."},
+{n:"Diderot Effect",c:BUY,w:"Grant McCracken, 1988",l:"One new possession <b>drags a spiral of purchases</b> behind it.",f:"Diderot got an elegant new dressing gown, then found his desk shabby, then his chair, then his whole study — and wrote an essay regretting it."},
+{n:"Veblen Effect",c:BUY,w:"Thorstein Veblen, 1899",l:"For some goods, <b>demand rises as the price rises</b>.",f:"The price is the product. Cut it and the signal — and the demand — goes with it."},
+{n:"Loss Aversion",c:BUY,w:"Kahneman and Tversky, 1979",l:"Losing £10 hurts about <b>twice as much</b> as gaining £10 pleases.",f:"Explains why 'don't lose your streak' outperforms 'earn a reward', and why people cling to depreciating investments."},
+{n:"Endowed Progress Effect",c:BUY,w:"Nunes and Drèze, 2006",l:"A card <b>pre-stamped</b> with two free stamps gets finished far more often.",f:"Ten stamps needed either way — but starting at 2/12 beats starting at 0/10, because people finish what looks begun."},
+{n:"Rule of Seven",c:BUY,w:"marketing adage, traced to 1930s film-industry studies",l:"A buyer typically needs to encounter a message about <b>seven separate times</b> before they act on it.",f:"Originally a Hollywood rule of thumb for how many times moviegoers needed to see an ad before buying a ticket. Repetition, not persuasion, was doing the work."},
+{n:"Charm Pricing",c:BUY,w:"retail practice since the 1880s; studied by Thomas and Morwitz, 2005",l:"$19.99 registers as meaningfully <b>cheaper than $20</b>, even though the gap is a single cent.",f:"Also called the left-digit effect: the brain anchors on the first digit it reads and barely processes the rest of the number."},
+{n:"Scarcity Principle",c:BUY,w:"Robert Cialdini, 1984",l:"Something feels <b>more valuable the moment</b> it seems limited or about to run out.",f:"\"Only 2 left\" and countdown timers exploit a genuinely old instinct: losing access to an option feels worse than never having had it."},
+{n:"Framing Effect",c:BUY,w:"Tversky and Kahneman, 1981",l:"The <b>same information</b> gets a different reaction depending on how it's worded.",f:"\"90% fat free\" outsells identical stock labelled \"10% fat\" every time, despite being the exact same product with the exact same number."},
+{n:"Default Effect",c:BUY,w:"Johnson and Goldstein, 2003",l:"Whatever option is <b>pre-selected</b> gets chosen far more often, regardless of its merits.",f:"Countries where organ donation is opt-out see enrolment rates near universal; countries where it's opt-in see them stay low. Nobody is reading the form that closely."},
+{n:"Contrast Effect",c:BUY,w:"Robert Cialdini, 1984",l:"Showing an <b>expensive item first</b> makes the next one look like a bargain by comparison.",f:"A salesperson who shows the costliest suit first isn't hoping you'll buy it — they're resetting your sense of what \"reasonable\" costs before showing you the rest of the rack."},
+{n:"Buyer's Remorse",c:BUY,w:"explained via Leon Festinger's cognitive dissonance theory, 1957",l:"The discomfort of a purchase clashing with doubt gets resolved by <b>either justifying it harder or regretting it</b>.",f:"Festinger's theory of dissonance predicts both directions. Which way it breaks often depends on how public and how reversible the decision was."},
+{n:"Rule of 100",c:BUY,w:"pricing psychology research, 2000s",l:"Below $100, advertise the <b>percentage off</b>; above $100, advertise the <b>dollar amount</b> off — whichever number looks bigger.",f:"$5 off a $20 item reads as a modest deal; \"25% off\" the same item reads as a steal. Retailers pick whichever framing produces the larger-looking number."},
+{n:"Priming Effect",c:BUY,w:"John Bargh et al., 1996",l:"Exposure to one idea can <b>subtly steer behaviour</b> toward a related, unrelated-seeming action.",f:"Bargh's famous study found people primed with words about old age walked away from the lab more slowly. Worth flagging: several later replication attempts have failed, so treat the strong version skeptically."},
+{n:"Winner's Curse",c:BUY,w:"Capen, Clapp and Campbell, 1971",l:"In an auction with many bidders, the <b>winning bid</b> tends to be an overestimate of the item's true value.",f:"Whoever was most wrong in the optimistic direction wins. The more bidders competing, the worse the winner's overpayment tends to be."},
+{n:"Nudge Theory",c:BUY,w:"Thaler and Sunstein, 2008",l:"Redesigning how a choice is <b>presented</b> can steer decisions without ever removing an option.",f:"Putting fruit at eye level and chips lower down changes what people grab, with nobody's freedom to choose the chips actually restricted."},
+
+/* ---- WORK & BUREAUCRACY ---- */
+{n:"Parkinson's Law",c:WRK,w:"C. Northcote Parkinson, 1955",l:"Work <b>expands to fill</b> the time available for it.",f:"Written as satire about the British Civil Service, where staff numbers grew steadily while the empire they administered shrank."},
+{n:"Hofstadter's Law",c:WRK,w:"Douglas Hofstadter, 1979",l:"It always takes longer than you expect — <b>even when you account for Hofstadter's Law</b>.",f:"The recursion is the joke and the warning. Padding the estimate does not escape it."},
+{n:"Brooks's Law",c:WRK,w:"Fred Brooks, 1975",l:"Adding people to a late software project makes it <b>later</b>.",f:"New arrivals need training from the people already behind, and communication paths grow with the square of the team."},
+{n:"Peter Principle",c:WRK,w:"Laurence J. Peter, 1969",l:"People are promoted until they reach a job <b>they're bad at</b> — and stay there.",f:"Promotion rewards performance in the old role, not aptitude for the new one. The excellent engineer becomes the mediocre manager."},
+{n:"Dilbert Principle",c:WRK,w:"Scott Adams, 1995",l:"The <b>least competent</b> are promoted to management, where they can do least damage.",f:"Adams's darker revision of Peter: incompetence isn't the endpoint of the climb, it's the qualification for it."},
+{n:"Dead Sea Effect",c:WRK,w:"Bruce Webster, 2008",l:"The <b>most capable staff evaporate first</b>, leaving the rest behind.",f:"The best people have the most options, so a bad environment loses them fastest and the residue grows saltier over time."},
+{n:"Pournelle's Iron Law of Bureaucracy",c:WRK,w:"Jerry Pournelle",l:"In every organisation, the people <b>devoted to the organisation itself</b> end up in charge.",f:"Two groups exist: those serving the mission and those serving the institution. The second group controls promotions, so it wins."},
+{n:"Shirky Principle",c:WRK,w:"Clay Shirky, 2010",l:"Institutions try to <b>preserve the problem</b> they are the solution to.",f:"Not conspiracy, just incentive. Nobody in the anti-fraud department is rewarded for eliminating fraud entirely."},
+{n:"Putt's Law",c:WRK,w:"Archibald Putt, 1981",l:"Technology is run by those who <b>understand what they don't manage</b> and those who <b>manage what they don't understand</b>.",f:"The corollary is bleaker: every technical hierarchy develops a competence inversion over time."},
+{n:"Miles's Law",c:WRK,w:"Rufus Miles, 1949",l:"<b>Where you stand depends on where you sit.</b>",f:"Move a person from one department to another and their firmly held opinions relocate with their desk, sincerely."},
+{n:"Osborne Effect",c:WRK,w:"Osborne Computer, 1983",l:"Announcing a better product <b>kills sales of your current one</b>.",f:"Buyers waited for the announced machine, revenue collapsed before it shipped, and the company folded. Hence years of vague roadmaps."},
+{n:"Ratner Effect",c:WRK,w:"Gerald Ratner, 1991",l:"A single executive remark can <b>vaporise a company's value</b>.",f:"Ratner joked that his jewellery was 'total crap' at a business dinner. About £500m came off the company, and the chain lost its name."},
+{n:"Law of Triviality",c:WRK,w:"C. Northcote Parkinson, 1957",l:"Time spent on an item is <b>inversely proportional</b> to the money involved.",f:"The formal statement behind bikeshedding, and a reliable way to predict which agenda item will overrun."},
+{n:"Iron Law of Institutions",c:WRK,w:"Jonathan Schwarz, 2013",l:"People inside an institution care more about their <b>own standing within it</b> than about the institution actually succeeding.",f:"Explains why leaders sometimes seem to sabotage their own organisation's wider goals rather than risk losing power inside it."},
+{n:"Yerkes–Dodson Law",c:WRK,w:"Yerkes and Dodson, 1908",l:"Performance rises with pressure — <b>up to a point</b>, after which more stress makes it worse.",f:"Too little arousal and you're sluggish; too much and you choke. The sweet spot in the middle also shifts with how hard the task is."},
+{n:"Two-Pizza Rule",c:WRK,w:"attributed to Jeff Bezos, Amazon",l:"If a team can't be fed with <b>two pizzas</b>, it's too big to be productive.",f:"An informal cap of roughly six to ten people, on the theory that communication overhead eats the gains of adding more bodies past that point."},
+{n:"Golden Handcuffs",c:WRK,w:"business idiom, mid-20th century",l:"Pay and perks generous enough that <b>leaving starts to feel unaffordable</b>, even in an unwanted job.",f:"Vesting schedules, deferred bonuses and stock grants are often built explicitly around this — retention through financial gravity rather than loyalty."},
+{n:"10,000-Hour Rule",c:WRK,w:"Ericsson, 1993; popularised by Malcolm Gladwell, 2008",l:"Roughly <b>ten thousand hours</b> of deliberate practice separates novices from world-class performers.",f:"Ericsson's original research was specifically about structured, feedback-heavy practice, not casual repetition — a distinction the popularised version tends to drop."},
+{n:"Participation Inequality",c:WRK,w:"Jakob Nielsen, 2006",l:"In most online communities, roughly <b>90% lurk, 9% edit occasionally, and 1% create almost everything</b>.",f:"Also called the 90-9-1 rule. Wikipedia, forums and open-source projects all show a version of this same lopsided curve of contribution."},
+{n:"Ashby's Law of Requisite Variety",c:WRK,w:"W. Ross Ashby, 1956",l:"A control system needs to be <b>at least as complex</b> as the thing it's trying to control.",f:"A cybernetics principle with an obvious management moral: a simple rulebook cannot successfully govern a genuinely complicated situation."},
+{n:"Law of the Situation",c:WRK,w:"Mary Parker Follett, 1920s",l:"Authority should come from the <b>facts of the situation</b>, not from someone's rank.",f:"An early management-theory challenge to pure hierarchy: the person closest to the problem, not the highest title in the room, should often be the one deciding."},
+{n:"Deming's 85/15 Rule",c:WRK,w:"W. Edwards Deming, mid-20th century",l:"About <b>85% of workplace failures</b> trace back to flawed systems, not careless individuals.",f:"Deming's quality-management insight, aimed squarely at managers who blame the worker on the line instead of fixing the process the worker was following."},
+{n:"McNamara Fallacy",c:WRK,w:"Daniel Yankelovich, 1972; named for Robert McNamara",l:"Making decisions based only on the <b>numbers you can measure</b>, while ignoring what matters but can't easily be counted.",f:"Named for the Vietnam-era defence secretary's reliance on body counts. Whatever resists a spreadsheet quietly stops being managed."},
+{n:"Creative Incompetence",c:WRK,w:"from Laurence Peter and Raymond Hull's \"The Peter Principle,\" 1969",l:"Deliberately appearing <b>slightly less capable</b> than you are, to avoid being promoted past the job you actually enjoy.",f:"A tongue-in-cheek escape hatch from the book's own thesis: if promotion eventually reaches your level of incompetence, staying just below it is a rational move."},
+
+/* ---- SYSTEMS & MONEY ---- */
+{n:"Campbell's Law",c:SYS,w:"Donald Campbell, 1979",l:"The more a metric drives decisions, the more it will be <b>corrupted and distort what it measures</b>.",f:"Goodhart's sharper cousin, aimed at social policy: test-score targets produce teaching to the test, then produce cheating."},
+{n:"Conway's Law",c:SYS,w:"Melvin Conway, 1967",l:"Organisations ship <b>copies of their own communication structure</b>.",f:"Four teams building a compiler produce a four-pass compiler. To change the architecture, many firms first change the org chart."},
+{n:"Gall's Law",c:SYS,w:"John Gall, 1975",l:"Every working complex system <b>evolved from a simple system that worked</b>.",f:"Complex systems designed complex from scratch don't work and can't be patched into working. Start small or start again."},
+{n:"Cobra Effect",c:SYS,w:"Horst Siebert, 2001",l:"An incentive to fix a problem <b>creates more of the problem</b>.",f:"Colonial Delhi paid a bounty per dead cobra. People farmed cobras. The scheme ended, the farms were released, and the city had more snakes than before."},
+{n:"Peltzman Effect",c:SYS,w:"Sam Peltzman, 1975",l:"Safety measures encourage <b>riskier behaviour</b>, eating some of the benefit.",f:"Seatbelts, helmets, anti-lock brakes. The gain is usually real but smaller than engineers predict, because behaviour adapts."},
+{n:"Jevons Paradox",c:SYS,w:"William Stanley Jevons, 1865",l:"Making a resource more efficient to use makes us <b>use more of it</b>.",f:"Better steam engines increased British coal consumption. Efficient servers didn't shrink data-centre power draw either."},
+{n:"Gresham's Law",c:SYS,w:"named for Thomas Gresham, 16th century",l:"<b>Bad money drives out good.</b>",f:"When two coins share a face value, people spend the debased one and hoard the good one. Applies to arguments and job applicants too."},
+{n:"Baumol's Cost Disease",c:SYS,w:"Baumol and Bowen, 1966",l:"Wages rise in <b>low-productivity sectors</b> because they must compete with productive ones.",f:"A string quartet needs the same four players it needed in 1800. Hence the relentless rise in the real cost of care, teaching and live music."},
+{n:"Pareto Principle",c:SYS,w:"Vilfredo Pareto, 1896",l:"Roughly <b>80% of effects</b> come from <b>20% of causes</b>.",f:"Pareto noticed 20% of Italians owned 80% of the land, then found the shape everywhere: crashes, sales, defects, complaints."},
+{n:"Tragedy of the Commons",c:SYS,w:"Garrett Hardin, 1968",l:"Shared resources get <b>exhausted by individually rational use</b>.",f:"Every herder gains fully from one more cow and pays only a fraction of the overgrazing. Elinor Ostrom later won a Nobel showing communities often solve this without privatising."},
+{n:"Iron Law of Prohibition",c:SYS,w:"Richard Cowan, 1986",l:"The harder a substance is policed, the <b>more concentrated</b> the version that reaches people.",f:"Smuggling favours potency per unit volume. Prohibition pushed beer aside for spirits; modern enforcement has done the same to opioids."},
+{n:"Law of Unintended Consequences",c:SYS,w:"Robert K. Merton, 1936",l:"Deliberate actions in a complex system routinely produce <b>effects nobody intended</b>.",f:"Merton catalogued the ways good intentions go sideways: incomplete knowledge, competing interests, and short-term thinking about long-term systems."},
+{n:"Law of Diminishing Returns",c:SYS,w:"Anne Robert Jacques Turgot, 1767",l:"Adding more of one input eventually produces <b>smaller and smaller gains</b> from each additional unit.",f:"The fourth farmhand helps a lot; the fortieth is tripping over the other thirty-nine. Originally an observation about farmland, now applied to almost anything."},
+{n:"Say's Law",c:SYS,w:"Jean-Baptiste Say, 1803",l:"<b>Supply creates its own demand</b> — producing goods generates the income needed to buy other goods.",f:"A foundational and heavily contested claim in classical economics; Keynesians spent the 20th century arguing demand can fall well short of supply regardless."},
+{n:"Broken Window Fallacy",c:SYS,w:"Frédéric Bastiat, 1850",l:"Paying to fix <b>deliberate damage</b> is not a net economic gain, even though it creates visible work.",f:"Bastiat's parable: a broken shop window \"creates work\" for the glazier, but the shopkeeper's money that pays for it can no longer buy anything else. The window is a loss, not a stimulus."},
+{n:"Butterfly Effect",c:SYS,w:"Edward Lorenz, 1963",l:"In a complex system, a <b>tiny change in starting conditions</b> can produce wildly different outcomes down the line.",f:"Lorenz found this while modelling weather: rounding a number in the sixth decimal place produced a completely different forecast. Long-range weather prediction has never fully recovered."},
+{n:"Malthusian Trap",c:SYS,w:"Thomas Malthus, 1798",l:"Population tends to <b>grow faster than food supply</b>, until famine, disease or war brings it back down.",f:"Malthus's grim prediction mostly failed to materialise in industrialised countries — he didn't foresee how fast agricultural technology would improve."},
+{n:"Gibrat's Law",c:SYS,w:"Robert Gibrat, 1931",l:"A firm's <b>growth rate</b> is statistically independent of how big it already is.",f:"Counterintuitive at first: a small startup and a giant conglomerate are, on average, equally likely to grow by the same percentage in any given year."},
+{n:"Kranzberg's First Law",c:SYS,w:"Melvin Kranzberg, 1986",l:"Technology is <b>neither good nor bad</b> — and it is never neutral either.",f:"A tool's effects depend entirely on the social context it lands in. The same technology that connects people can just as easily be used to surveil them."},
+{n:"Tragedy of the Anticommons",c:SYS,w:"Michael Heller, 1998",l:"Too many people holding a <b>veto over a resource</b> causes it to sit unused, the mirror image of overuse.",f:"Empty storefronts in buildings with dozens of co-owners, or medicines stuck in development because too many separate patents each need clearing first."},
+{n:"Paradox of Thrift",c:SYS,w:"John Maynard Keynes, 1936; concept traced to Bernard Mandeville, 1714",l:"If everyone saves more during a downturn, total <b>spending falls further</b> and can make the downturn worse.",f:"Individually sensible behaviour — cutting back when times are hard — becomes collectively self-defeating once everyone does it simultaneously."},
+{n:"Dutch Disease",c:SYS,w:"named by The Economist, 1977",l:"A resource boom can <b>quietly wreck other industries</b> by driving up the currency and drawing away investment.",f:"Named after the Netherlands' 1959 natural gas discovery, which coincided with a decline in Dutch manufacturing exports. Money flowed to gas; everything else got more expensive to sell abroad."},
+
+/* ---- MACHINES & INTERFACES ---- */
+{n:"Clarke's Third Law",c:MAC,w:"Arthur C. Clarke, 1973",l:"Any sufficiently advanced technology is <b>indistinguishable from magic</b>.",f:"His first law is the useful one for arguments: when a distinguished elderly scientist says something is impossible, they are very probably wrong."},
+{n:"Moore's Law",c:MAC,w:"Gordon Moore, 1965",l:"Transistors on a chip <b>double roughly every two years</b>.",f:"Never a law of physics — an industry observation that became a roadmap the industry then spent sixty years hitting on purpose."},
+{n:"Wirth's Law",c:MAC,w:"Niklaus Wirth, 1995",l:"Software gets <b>slower faster</b> than hardware gets faster.",f:"Every hardware gain is spent on abstraction, features and frameworks. Your phone outguns the Apollo programme and still stutters opening a settings page."},
+{n:"Zawinski's Law",c:MAC,w:"Jamie Zawinski",l:"Every program expands until it can <b>read email</b>.",f:"Those which cannot, he added, are replaced by ones which can. Update 'email' to 'chat' and it hasn't aged a day."},
+{n:"Atwood's Law",c:MAC,w:"Jeff Atwood, 2007",l:"Anything that can be written in JavaScript <b>eventually will be</b>.",f:"Written as a joke. Since then: servers, desktop apps, 3D engines, machine learning, and the site you're reading this on."},
+{n:"Kernighan's Law",c:MAC,w:"Brian Kernighan, 1974",l:"Debugging is <b>twice as hard</b> as writing code — so clever code is by definition <b>undebuggable</b> by its author.",f:"The most quietly devastating argument for boring, obvious code ever written."},
+{n:"Postel's Law",c:MAC,w:"Jon Postel, 1980",l:"Be <b>conservative in what you send</b>, liberal in what you accept.",f:"It built an interoperable internet — and left a long tail of malformed inputs that later became security holes, so modern practice has softened it."},
+{n:"Metcalfe's Law",c:MAC,w:"Robert Metcalfe, 1980",l:"A network's value grows with the <b>square of its users</b>.",f:"One fax machine is a paperweight. Later work suggests n log n is closer to reality, but the shape — the cold-start problem — is what matters."},
+{n:"Amara's Law",c:MAC,w:"Roy Amara",l:"We <b>overestimate</b> technology in the short run and <b>underestimate</b> it in the long run.",f:"The single most useful sentence for reading any hype cycle, including whichever one you're standing in now."},
+{n:"Hick's Law",c:MAC,w:"Hick and Hyman, 1952",l:"Decision time grows with the <b>number of choices</b>, logarithmically.",f:"Why good menus are grouped and shallow, and why remote controls with sixty buttons feel slow before you've pressed one."},
+{n:"Fitts's Law",c:MAC,w:"Paul Fitts, 1954",l:"Time to hit a target depends on its <b>distance and size</b>.",f:"Screen edges and corners are effectively infinite targets because the pointer stops there. That's the whole argument for the Mac menu bar."},
+{n:"Miller's Law",c:MAC,w:"George Miller, 1956",l:"Working memory holds about <b>seven items, give or take two</b>.",f:"Miller's real point was chunking: group items and the limit applies to the groups, which is why phone numbers are split up."},
+{n:"Jakob's Law",c:MAC,w:"Jakob Nielsen, 2000",l:"Users spend most of their time on <b>other</b> sites, so they expect yours to work like those.",f:"The strongest argument against novel navigation. Convention is not laziness; it is borrowed knowledge your users already have."},
+{n:"Aesthetic–Usability Effect",c:MAC,w:"Kurosu and Kashimura, 1995",l:"Attractive interfaces are <b>perceived as easier to use</b> — and forgiven more.",f:"Beauty buys tolerance for small problems, which is exactly why it also hides them from usability testing."},
+{n:"Doherty Threshold",c:MAC,w:"Doherty and Thadani, IBM, 1982",l:"Below about <b>400 milliseconds</b>, response time stops breaking concentration.",f:"Productivity rose sharply once machines answered faster than people could lose their train of thought. Modern loading skeletons are chasing the same number."},
+{n:"Tesler's Law",c:MAC,w:"Larry Tesler, 1980s",l:"Every system has <b>irreducible complexity</b> — the only question is who absorbs it.",f:"Also the law of conservation of complexity. Simplify the user's side and an engineer carries the difference; refuse, and the user does."},
+{n:"Hyrum's Law",c:MAC,w:"Hyrum Wright, Google, 2010s",l:"With enough users, <b>every observable behaviour</b> of your system — even bugs — will end up being depended on by someone.",f:"That includes quirks nobody documented and nobody intended. Change the quirk to \"fix\" it and you will break somebody's workflow that quietly relied on it."},
+{n:"Bus Factor",c:MAC,w:"software engineering folklore, origin unclear",l:"The number of people who'd need to be <b>hit by a bus</b> before a project grinds to a halt.",f:"A bus factor of one means exactly one person understands a critical system. Teams treat a low number as a five-alarm fire, quietly."},
+{n:"Linus's Law",c:MAC,w:"Eric S. Raymond, 1999",l:"Given enough people looking at the code, <b>every bug is easy to spot</b>.",f:"Named for Linus Torvalds and Linux. The open-source argument for why many eyes catch what one careful author will always miss."},
+{n:"Greenspun's Tenth Rule",c:MAC,w:"Philip Greenspun, 1993",l:"Any sufficiently complex program ends up <b>reinventing half of Lisp</b>, badly and without meaning to.",f:"A joke with a real point: enough ad hoc features — conditionals, symbols, a tiny interpreter — and you've rebuilt a much older, better-designed language from scratch."},
+{n:"Ballmer Peak",c:MAC,w:"named via an xkcd comic, 2007",l:"A narrow blood-alcohol window where programming ability supposedly <b>peaks</b> rather than declines.",f:"Named after Steve Ballmer, purely as a joke — but the term stuck hard enough that it now shows up in programmer folklore as if it were real science."},
+{n:"Principle of Least Astonishment",c:MAC,w:"software design principle, in use since the 1970s",l:"A system should behave the way users <b>expect</b> it to, even if that isn't the most elegant option.",f:"If a button labelled \"Save\" deletes your file, it doesn't matter how clever the underlying logic is — the design has already failed."},
+{n:"Parkinson's Law of Data",c:MAC,w:"informal IT corollary of Parkinson's Law",l:"Data <b>expands to fill</b> whatever storage is available for it.",f:"Give a team more disk space and, within weeks, it's full again — not because anything urgent needed it, but because nothing was ever forced to be deleted."},
+{n:"Law of Leaky Abstractions",c:MAC,w:"Joel Spolsky, 2002",l:"Every convenient shortcut in software eventually <b>breaks down</b> and forces you to understand what it was hiding.",f:"A database query works fine until it's slow, and suddenly you need to understand indexes anyway. The abstraction was only ever a curtain, not a wall."},
+{n:"Principle of Least Privilege",c:MAC,w:"Saltzer and Schroeder, 1975",l:"Every part of a system should have <b>only the access it strictly needs</b>, and nothing more.",f:"A foundational security rule: the smaller the blast radius of any single compromised account, the less damage a mistake or an attacker can do."},
+{n:"Weinberg's Law",c:MAC,w:"Gerald Weinberg, 1971",l:"If builders built buildings the way programmers write programs, the <b>first woodpecker</b> would bring down civilisation.",f:"From \"The Psychology of Computer Programming.\" A dig at how casually software tolerates fragility that no other engineering discipline would accept."},
+{n:"Grosch's Law",c:MAC,w:"Herbert Grosch, 1953",l:"Computing power increases roughly with the <b>square of the price</b> — bigger machines were disproportionately more cost-effective.",f:"An IBM-era observation that justified giant centralised mainframes for decades, right up until cheap microprocessors quietly broke the whole premise."},
+
+/* ---- NUMBERS & ODDS ---- */
+{n:"Benford's Law",c:NUM,w:"Newcomb 1881; Benford 1938",l:"In natural datasets, <b>1 leads about 30% of numbers</b> and 9 leads under 5%.",f:"Fabricated figures tend to spread digits evenly, so forensic accountants and election auditors use the gap as a first alarm."},
+{n:"Zipf's Law",c:NUM,w:"George Zipf, 1930s-40s",l:"The <b>second most common word</b> appears about half as often as the first, the third a third as often, and on down.",f:"Holds for English, city sizes, website traffic and income. Nobody fully agrees on why."},
+{n:"Littlewood's Law",c:NUM,w:"J. E. Littlewood, 1986",l:"You should expect a <b>one-in-a-million event about once a month</b>.",f:"Count roughly one event per second while awake and the maths is unremarkable. Miracles are a sample-size illusion."},
+{n:"Twyman's Law",c:NUM,w:"Tony Twyman, 1970s",l:"Any figure that looks <b>interesting or unusual</b> is usually wrong.",f:"The best single instinct in data work. A 400% overnight jump is a broken tracking tag far more often than a discovery."},
+{n:"Simpson's Paradox",c:NUM,w:"Edward Simpson, 1951",l:"A trend in every subgroup can <b>reverse</b> when you combine them.",f:"Berkeley appeared to reject women unfairly overall while favouring them in most departments — women simply applied more to the hardest-to-enter ones."},
+{n:"Berkson's Paradox",c:NUM,w:"Joseph Berkson, 1946",l:"Selecting your sample creates a <b>correlation that isn't there</b> in the wild.",f:"Among people you've dated, attractiveness and kindness may seem inversely related — because you filtered out the people lacking both."},
+{n:"Birthday Problem",c:NUM,w:"classic result, 1930s",l:"In a room of <b>23</b> people it's more likely than not that two share a birthday.",f:"There are 253 possible pairs, not 23 people. The same counting error underpins a lot of misplaced confidence about coincidence."},
+{n:"Lindy Effect",c:NUM,w:"Mandelbrot 1982; Taleb 2012",l:"For non-perishables, <b>every year survived predicts another</b>.",f:"A book in print for fifty years will plausibly last another fifty. A book published last week probably won't. Applies to ideas and technologies, never to bodies."},
+{n:"Regression to the Mean",c:NUM,w:"Francis Galton, 1886",l:"Extreme results are usually followed by <b>ordinary ones</b>, with no cause required.",f:"Kahneman's instructors 'proved' criticism worked and praise didn't. Both were watching the maths, not the pilots."},
+{n:"Law of Small Numbers",c:NUM,w:"Tversky and Kahneman, 1971",l:"We expect <b>tiny samples</b> to look like the whole population.",f:"Small counties top both the highest and lowest cancer-rate lists, for the same boring reason: less data, wilder swings."},
+{n:"Base Rate Fallacy",c:NUM,w:"Kahneman and Tversky, 1973",l:"Vivid detail overrides <b>how common something actually is</b>.",f:"A 99%-accurate test for a disease that affects 1 in 10,000 still gives you mostly false positives — and almost nobody's intuition accepts that."}
+,{n:"Monty Hall Problem",c:NUM,w:"Steve Selvin, 1975; popularised by Marilyn vos Savant, 1990",l:"After picking a door, <b>switching to the other unopened door</b> doubles your odds of winning.",f:"Based on the game show \"Let's Make a Deal.\" Vos Savant's correct solution provoked outraged letters from mathematicians insisting she was wrong. She wasn't."},
+{n:"Gambler's Fallacy",c:NUM,w:"traced to the Monte Carlo Casino incident, 1913",l:"Believing a <b>random streak</b> makes the opposite outcome \"due\" next.",f:"A roulette wheel landed on black 26 times running in Monte Carlo. Gamblers bet ever more heavily on red, certain it had to come up — and lost fortunes. Each spin was still independent."},
+{n:"Prosecutor's Fallacy",c:NUM,w:"Thompson and Schumann, 1987",l:"Confusing \"how rare this evidence is if innocent\" with \"<b>how likely innocence is</b> given this evidence.\"",f:"A DNA match with 1-in-a-million odds sounds damning, but in a city of ten million, ten other people match too — a courtroom-relevant distinction that's easy to blur."},
+{n:"St. Petersburg Paradox",c:NUM,w:"Daniel Bernoulli, 1738",l:"A coin-flip game with <b>infinite expected value</b> that almost nobody would pay more than a few dollars to play.",f:"Bernoulli used the puzzle to argue that people value money on a diminishing scale — the thousandth dollar means less than the first — not on its raw expected value."},
+{n:"Two Envelopes Paradox",c:NUM,w:"recreational mathematics puzzle, mid-20th century",l:"A puzzle where swapping <b>either unopened envelope</b> for the other seems to always be the better bet — which can't both be true.",f:"The trap is subtle enough that professional mathematicians disagree about exactly where the reasoning breaks down."},
+{n:"Friendship Paradox",c:NUM,w:"Scott L. Feld, 1991",l:"On average, <b>your friends have more friends</b> than you do.",f:"Not a personal failing — a sampling quirk. Popular people show up in far more people's friend lists, so any random friend is more likely to be one of them."},
+{n:"Inspection Paradox",c:NUM,w:"documented in queueing theory, mid-20th century",l:"The bus you're waiting for feels like it's <b>always late</b>, because long gaps between buses catch more waiting passengers than short ones.",f:"A rider arriving at a random moment is statistically more likely to land inside a long interval than a short one, which skews everyone's felt experience of \"typical\" wait time."},
+{n:"Will Rogers Phenomenon",c:NUM,w:"named by Alvan Feinstein, 1985",l:"Moving one item from a low-average group to a high-average group can <b>raise both averages</b>, with nothing else changing.",f:"Named for Will Rogers's joke that migrants from Oklahoma raised the average intelligence in both states they left and joined. A real statistical effect in medical staging data, not just a punchline."},
+{n:"Multiple Comparisons Problem",c:NUM,w:"formalised through 20th-century statistics",l:"Run <b>enough separate statistical tests</b> and some will look significant by chance alone, even in random data.",f:"Test twenty unrelated hypotheses at the standard 5% threshold and you should expect roughly one false positive — even if nothing real is going on at all."},
+{n:"Anscombe's Quartet",c:NUM,w:"Francis Anscombe, 1973",l:"Four wildly different-looking datasets can share the <b>exact same average, variance and correlation</b>.",f:"Anscombe built the quartet specifically to prove that summary statistics can hide a graph's real story completely — plot the data, don't just trust the numbers."},
+];
+
+/* ---------- RENDER ---------- */
+const grid=document.getElementById("grid"),
+      tally=document.getElementById("tally"),
+      chipbar=document.getElementById("chips"),
+      search=document.getElementById("search"),
+      filterbtn=document.getElementById("filterbtn"),
+      filterlabel=document.getElementById("filterlabel");
+let active="All";
+
+function panel(open){
+  chipbar.hidden=!open;
+  filterbtn.setAttribute("aria-expanded",String(open));
+}
+filterbtn.onclick=()=>panel(chipbar.hidden);
+
+function norm(s){return s.replace(/<[^>]*>/g,"").replace(/&amp;/g,"&").replace(/[^a-z0-9]+/gi," ").toLowerCase()}
+DATA.forEach(d=>{d._h=norm(d.n+" "+d.c+" "+d.w+" "+d.l+" "+d.f)});
+
+function choose(label,btn){
+  active=label;
+  [...chipbar.children].forEach(c=>c.setAttribute("aria-pressed","false"));
+  btn.setAttribute("aria-pressed","true");
+  filterlabel.innerHTML=(label==="All"?"Sections":label);
+  panel(false);
+  render();
+}
+function makeChip(label,color,value){
+  const b=document.createElement("button");
+  b.type="button";b.className="chip";b.setAttribute("aria-pressed",value===active);
+  b.innerHTML=(color?'<span class="dot" style="background:'+color+'"></span>':"")+label;
+  b.onclick=()=>choose(value,b);
+  chipbar.appendChild(b);
+  return b;
+}
+const allChip=makeChip("All sections","","All");
+Object.keys(CATS).forEach(k=>makeChip(k,CATS[k],k));
+
+function card(d,i){
+  const c=CATS[d.c];
+  const b=document.createElement("button");
+  b.type="button";b.className="card";b.setAttribute("aria-expanded","false");
+  b.style.borderLeftColor=c;
+  b.innerHTML=
+    '<div class="card-top"><h3>'+d.n+'</h3><span class="tag" style="background:'+c+'">'+d.c+'</span></div>'+
+    '<p class="line">'+d.l+'</p>'+
+    '<div class="more"><div class="more-in"><h4>In the field</h4><p>'+d.f+'</p><p class="filed">Filed by '+d.w+'</p></div></div>'+
+    '<span class="hint">Tap to close ▲</span>';
+  b.querySelector(".hint").textContent="Tap for the briefing ▾";
+  b.onclick=()=>{
+    const open=b.getAttribute("aria-expanded")==="true";
+    b.setAttribute("aria-expanded",String(!open));
+    b.querySelector(".hint").textContent=open?"Tap for the briefing ▾":"Close ▴";
+  };
+  return b;
+}
+
+function render(){
+  const q=norm(search.value.trim());
+  const list=DATA.filter(d=>(active==="All"||d.c===active)&&(!q||d._h.includes(q)));
+  grid.innerHTML="";
+  if(!list.length){
+    grid.innerHTML='<div class="empty"><h3>Nothing in the files.</h3><p>Try a shorter word, or pick <b>All sections</b> to search the whole manual.</p></div>';
+  } else {
+    list.forEach((d,i)=>grid.appendChild(card(d,i)));
+  }
+  tally.innerHTML="Showing <b>"+list.length+"</b> of "+DATA.length+" files"+(active==="All"?"":" · "+active);
+}
+
+search.addEventListener("input",render);
+document.getElementById("random").onclick=()=>{
+  search.value="";
+  choose("All",allChip);
+  const i=Math.floor(Math.random()*DATA.length), el=grid.children[i];
+  el.scrollIntoView({block:"center"});el.click();el.classList.add("flash");
+  setTimeout(()=>el.classList.remove("flash"),1900);
+};
+render();
+</script>
+</body>
+</html>
